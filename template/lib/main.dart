@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:template/modules/dashboard/views/dashboard.views.dart';
+import 'package:template/modules/provider/views/provider.views.dart';
 import 'package:template/modules/transactions/views/trasactions.view.dart';
 
 void main() => runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Dashboard()
+      home: ProviderView()
     );
   }
 }

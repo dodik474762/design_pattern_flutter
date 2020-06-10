@@ -118,8 +118,8 @@ class _DashboardState extends State<Dashboard> {
                 RaisedButton(
                     child: Text("Set Session"),
                     onPressed: ()async {
-                      await Session.push("counter", "1999");
-                      await Session.push("operate", "plus");
+                     await Session.push("counter", "1999");
+                     await Session.push("operate", "plus");
                     }),
                 SizedBox(
                   height: 20,
@@ -127,12 +127,12 @@ class _DashboardState extends State<Dashboard> {
                 RaisedButton(
                     child: Text("Get Session"),
                     onPressed: ()async {
-                      String counter = await Session.pull(Session.counter);
-                      if(counter != null){
-                        print("counter sekarang $counter");
-                      }else{
-                        print("counter sekarang kosong ndan");
-                      }
+                     String counter = await Session.pull(Session.counter);
+                     if(counter != null){
+                       print("counter sekarang $counter");
+                     }else{
+                       print("counter sekarang kosong ndan");
+                     }
                     }),
                 SizedBox(
                   height: 20,
@@ -140,7 +140,7 @@ class _DashboardState extends State<Dashboard> {
                 RaisedButton(
                     child: Text("Hapus Session"),
                     onPressed: ()async {
-                      await Session.remove(Session.counter);
+                     await Session.remove(Session.counter);
                     }),
                 SizedBox(
                   height: 20,
@@ -149,6 +149,14 @@ class _DashboardState extends State<Dashboard> {
                     child: Text("Goto Transaction"),
                     onPressed: () {
                         Navigate.route[modules]['transactions'](context);
+                    }),
+                SizedBox(
+                  height: 20,
+                ),
+                RaisedButton(
+                    child: Text("Goto Provider"),
+                    onPressed: () {
+                        Navigate.route[modules]['provider'](context);
                     }),
               ],
             ),

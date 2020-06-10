@@ -1,6 +1,6 @@
 
 class TransactionsController {
-  static Future<List<String>> loadData({last_page}) async {
+  static Future<List<String>> loadData({lastpage}) async {
     // perform fetching data delay
     await new Future.delayed(new Duration(seconds: 2));
     List<String>  data = await getData();
