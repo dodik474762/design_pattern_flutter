@@ -4,8 +4,8 @@ class DashboardModels{
   static String modules = "dashboard";
   static String content = "Odimo.id";
   static String jumlah = "";
-  static List<String> more_list = [
+  static List<String> morelist = [
     'Pilihan','Keluar', 'Refresh'
   ];
-  static List<User> data_user = [];
+  static List<User> datauser = [];
 }
