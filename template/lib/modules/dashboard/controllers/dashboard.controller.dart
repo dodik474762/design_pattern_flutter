@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:template/helpers/controller.dart';
 import 'package:template/modules/dashboard/models/dashboard.models.dart';
 import 'package:template/routes/api.dart';
 import 'dart:convert';
@@ -6,7 +7,7 @@ import 'dart:convert';
 import 'package:template/storage/user.dart';
 
 
-class DashboardController{
+class DashboardController extends Controller{
   String modules = DashboardModels.modules;
 
   Future<String> changeDataObject() async{

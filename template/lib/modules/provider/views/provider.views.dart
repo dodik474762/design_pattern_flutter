@@ -8,9 +8,6 @@ class ProviderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ProviderController>.value(
-      value: ProviderController(),
-      child: ContentProvider()
-    );
+    return ContentProvider();
   }
 }
