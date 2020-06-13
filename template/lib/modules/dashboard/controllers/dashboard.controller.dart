@@ -22,13 +22,10 @@ class DashboardController extends Controller{
     List<User> _data = [];
     var request = await http.get(Api.route[modules]['getData']);
     if(request.statusCode == 200){
-      var data = json.decode(request.body);
-      List result = data['data'];
+      var data = json.decode(request.body);      
+      List result = data['data'];      
       for(var item in result){
-        _data.add(User(
-          id: item['id'].toString(),
-          username: item['username'].toString()
-        ));
+        _data.add(User.fromJson(item));
       }
     }  
 
