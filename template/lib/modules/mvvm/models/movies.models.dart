@@ -1,35 +1,24 @@
 
 class Movies{
-  int page;
-  int totalResults;
-  int totalPages;
   List<Results> results;
 
   static String modules = "movies";
 
-  Movies({this.page, this.totalResults, this.totalPages, this.results});
+  Movies({this.results});
 
   Movies.fromJson(Map<String, dynamic> json){
-    this.page = json['page'];
-    this.totalResults = json['total_results'];
-    this.totalPages = json['total_pages'];
-
-    if(json['result']!=null){
+    if(json['data']!=null){
       this.results = new List<Results>();
-      json['result'].forEach((item){
+      json['data'].forEach((item){
         this.results.add(new Results.fromJson(item));
       });
     }
   }
 
   Map<String, dynamic> toJson(){
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['page'] = this.page;
-    data['total_results'] = this.totalResults;
-    data['total_pages'] = this.totalPages;
-    
+    final Map<String, dynamic> data = new Map<String, dynamic>();    
     if(this.results != null){
-      data['result'] = this.results.map((item) => item.toJson()).toList();
+      data['data'] = this.results.map((item) => item.toJson()).toList();
     }
 
     return data;
@@ -39,19 +28,22 @@ class Movies{
 
 class Results{
   String id;
-  String judul;
+  String username;
+  String password;
 
-  Results({this.id, this.judul});
+  Results({this.id, this.username, this.password});
 
   Results.fromJson(Map<String, dynamic> json){
-    this.id = json['id'];
-    this.judul = json['judul'];    
+    this.id = json['id'].toString();
+    this.username = json['username'].toString();    
+    this.password = json['password'].toString();    
   }
 
   Map<String, dynamic> toJson(){
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['judul'] = this.judul;
+    data['username'] = this.username;
+    data['password'] = this.password;
 
     return data;
   }
