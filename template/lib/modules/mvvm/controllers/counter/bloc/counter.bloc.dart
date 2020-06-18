@@ -1,7 +1,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:template/modules/mvvm/bloc/counter/events/counter.event.dart';
-import 'package:template/modules/mvvm/bloc/counter/state/counter.state.dart';
+import 'package:template/modules/mvvm/controllers/counter/events/counter.event.dart';
+import 'package:template/modules/mvvm/controllers/counter/state/counter.state.dart';
 import 'package:template/modules/mvvm/models/counter.models.dart';
 
 

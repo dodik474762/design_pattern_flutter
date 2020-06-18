@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:template/modules/mvvm/bloc/movies/bloc/movies.bloc.dart';
-import 'package:template/modules/mvvm/bloc/movies/events/movies.events.dart';
-import 'package:template/modules/mvvm/bloc/movies/state/movies.state.dart';
+import 'package:template/modules/mvvm/controllers/movies/bloc/movies.bloc.dart';
+import 'package:template/modules/mvvm/controllers/movies/events/movies.events.dart';
+import 'package:template/modules/mvvm/controllers/movies/state/movies.state.dart';
 import 'package:template/modules/mvvm/repository/movies.repository.dart';
 
 class Mvvm extends StatefulWidget {

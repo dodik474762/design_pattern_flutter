@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:template/config/pattern.dart';
 import 'package:template/config/register.dart';
 import 'package:template/modules/dashboard/views/dashboard.views.dart';
-import 'package:template/modules/mvvm/bloc/movies/bloc/movies.bloc.dart';
 import 'package:template/modules/mvvm/views/counter.views.dart';
 import 'package:template/modules/mvvm/views/mvvm.views.dart';
 import 'package:template/modules/provider/controllers/provider.controller.dart';
