@@ -28,6 +28,8 @@ dependencies:
   provider:
   flutter_bloc: ^4.0.0
   equatable: ^1.2.0
+  socket_io_client: ^0.9.10
+  flutter_socket_io: ^0.6.0
   
 
 dev_dependencies:

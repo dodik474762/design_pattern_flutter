@@ -9,6 +9,7 @@ import 'package:template/modules/mvvm/views/mvvm.views.dart';
 import 'package:template/modules/provider/controllers/provider.controller.dart';
 import 'package:template/modules/provider/views/provider.views.dart';
 import 'package:template/modules/transactions/views/trasactions.view.dart';
+import 'package:template/modules/verifikasibhnbaku/views/verifikasi.views.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: Counter()
+            home: VerifikasiBhnBaku()
           ), 
       );
     }else{
