@@ -18,3 +18,25 @@ class OutputHasilScanQr extends ScannerState {
   @override
   List<Object> get props => [qrcode];
 }
+
+class BeforeScanQr extends ScannerState {
+  @override
+  List<Object> get props => [];
+}
+
+class QrScanFailed extends ScannerState {
+  String error;
+  QrScanFailed({this.error});
+
+  @override
+  List<Object> get props => [error];
+}
+
+class QrScanSuccess extends ScannerState {
+  String message;
+  String kavlingScanned;
+  QrScanSuccess({this.message, this.kavlingScanned});
+
+  @override
+  List<Object> get props => [message, kavlingScanned];
+}
