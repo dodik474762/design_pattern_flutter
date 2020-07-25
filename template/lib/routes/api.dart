@@ -6,6 +6,10 @@ import 'package:template/modules/verifikasibhnbaku/models/verifikasi.models.dart
 class Api {
   static Map route = {
     DashboardModels.modules: {'getData': Url.appsurl + "/login/getData"},
-    VerifikasiModel.modules: {'verifikasi': Url.appsurl + "/verifikasi/verify"}
+    VerifikasiModel.modules: {
+      'verifikasi': Url.appsurl + "/verifikasi/verify",
+      'getDataSopirMasukUntukPenerimaan':
+          Url.appsurl + "/verifikasi/getDataSopirMasukUntukPenerimaan",
+    }
   };
 }

@@ -21,14 +21,15 @@ class VerifikasiBhnBaku extends StatefulWidget {
   _VerifikasiBhnBakuState createState() => _VerifikasiBhnBakuState();
 }
 
-class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
-  AktifitasBloc _bloc;
+class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> with WidgetsBindingObserver{
+//  AktifitasBloc _bloc;
   ScannerBloc _blocScanner;
 
   @override
   void initState() {
     super.initState();
-    _bloc = new AktifitasBloc();
+//    _bloc = new AktifitasBloc();
+    WidgetsBinding.instance.addObserver(this);
     _blocScanner = new ScannerBloc();
 
     // WebSocketConfig.init();
@@ -39,6 +40,15 @@ class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
     //   // print(result);
     //   _bloc.add(PerbaharuiAktifitas());
     // });
+
+//    _bloc.add(GetDataSopirMasukUntukPenerimaan());
+  }
+
+
+  @override
+  void dispose(){
+      WidgetsBinding.instance.removeObserver(this);
+      super.dispose();
   }
 
   @override
@@ -47,7 +57,7 @@ class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
       appBar: AppBar(
         title: Text("Verifikasi Bahan Baku"),
       ),
-      body: SingleChildScrollView(
+      body:SingleChildScrollView(
         child: Container(
           child: Column(
             children: <Widget>[
@@ -61,7 +71,7 @@ class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
                     child: Padding(
                       padding: EdgeInsets.all(3),
                       child: Text(
-                        "SILAKAN MENUJU KE KAVLING AB 11-5 DAN MELAKUKAN SCAN KARTU PADA KAVLING TSB",
+                        "SILAKAN MELAKUKAN SCAN QR PADA DEVICE SOPIR",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -70,22 +80,6 @@ class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(3.0)),
                   )),
-              Center(
-                child: Text("PDOF010", style: TextStyle(fontSize: 24)),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: Text("LUKMAN", style: TextStyle(fontSize: 24)),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: Text("TERIMA",
-                    style: TextStyle(fontSize: 24, color: Colors.green)),
-              ),
               SizedBox(
                 height: 20,
               ),
@@ -103,7 +97,8 @@ class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
                       }
 
                       return Text("Belum ada pesan Masuk",
-                          style: TextStyle(fontSize: 24, color: Colors.orange));
+                          style: TextStyle(
+                              fontSize: 24, color: Colors.orange));
                     }),
               ),
               SizedBox(
@@ -117,7 +112,7 @@ class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
                         return Text("${state.kavlingScanned}");
                       }
 
-                      return Text("Belum ada Qr Kavling discan",
+                      return Text("Belum ada Qr discan...",
                           style: TextStyle(fontSize: 24));
                     }),
               ),
@@ -140,7 +135,8 @@ class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
 
                       if (state is QrScanFailed) {
                         return Text("Scan Gagal ${state.error}",
-                            style: TextStyle(fontSize: 24, color: Colors.red));
+                            style: TextStyle(
+                                fontSize: 24, color: Colors.red));
                       }
 
                       return Text("", style: TextStyle(fontSize: 24));
@@ -153,22 +149,29 @@ class _VerifikasiBhnBakuState extends State<VerifikasiBhnBaku> {
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add_to_home_screen),
           onPressed: () async {
-            // print(Api.route[VerifikasiModel.modules]['verifikasi']);
-            // try {
-            //   VerifikasiModel.params["kavling"] = "okeeee";
-            //   // print(VerifikasiModel.params);
-            //   var request = await http.post(
-            //       Api.route[VerifikasiModel.modules]['verifikasi'],
-            //       body: {'kavling': 'okeee'});
-            //   if (request.statusCode == 200) {
-            //     print(request.body);
-            //   }
-            // } catch (e) {
-            //   print("error ${e.message}");
-            // }
-            _blocScanner.add(ScanQr());
+            try{
+              _blocScanner.add(ScanQr());
+            }catch(e){
+                print("ERROR "+e.toString());
+            }
             //scan qrcode
           }),
     );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if(state == AppLifecycleState.inactive){
+      print("IN AKTIF");
+    }
+
+    if(state == AppLifecycleState.paused){
+      print("IN PAUSED");
+    }
+
+    if(state == AppLifecycleState.resumed){
+      _blocScanner = ScannerBloc();
+      print("IN RESUME BRO");
+    }
   }
 }

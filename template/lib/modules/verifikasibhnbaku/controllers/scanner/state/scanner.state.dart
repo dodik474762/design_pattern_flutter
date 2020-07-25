@@ -40,3 +40,4 @@ class QrScanSuccess extends ScannerState {
   @override
   List<Object> get props => [message, kavlingScanned];
 }
+

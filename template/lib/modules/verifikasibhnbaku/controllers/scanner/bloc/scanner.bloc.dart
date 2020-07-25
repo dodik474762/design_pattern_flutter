@@ -18,11 +18,11 @@ class ScannerBloc extends Bloc<ScannerEvent, ScannerState> {
   @override
   Stream<ScannerState> mapEventToState(ScannerEvent event) async* {
     if (event is ScanQr) {
+      print("camera_result : ");
       String cameraScanResult = await scanner.scan();
-
       yield BeforeScanQr();
       try {
-        VerifikasiModel.params["kavling"] = cameraScanResult;
+        VerifikasiModel.params["nomor_panggil"] = cameraScanResult;
         var request = await http.post(
             Api.route[VerifikasiModel.modules]['verifikasi'],
             body: VerifikasiModel.params);
@@ -34,11 +34,24 @@ class ScannerBloc extends Bloc<ScannerEvent, ScannerState> {
           yield QrScanSuccess(
               message: msg.toString(), kavlingScanned: cameraScanResult);
         } else {
+          print("GAGAL CAM");
           yield QrScanFailed(error: request.statusCode.toString());
         }
       } catch (e) {
+        print("GAGAL CAM2");
         yield QrScanFailed(error: e.message.toString());
       }
     }
+
+    if(event is NewScanQr){
+      print("NEW SCAN");
+    }
+//    scanner.scan().
+
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+      print("ERROR BOOSS"+error);
   }
 }

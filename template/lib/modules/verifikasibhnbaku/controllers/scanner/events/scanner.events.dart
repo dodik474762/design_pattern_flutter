@@ -8,3 +8,5 @@ abstract class ScannerEvent extends Equatable {
 }
 
 class ScanQr extends ScannerEvent {}
+
+class NewScanQr extends ScannerEvent {}
