@@ -6,12 +6,16 @@ import 'package:template/config/pattern.dart';
 import 'package:template/config/register.dart';
 import 'package:template/modules/dashboard/views/dashboard.views.dart';
 import 'package:template/modules/example/views/example.views.dart';
+import 'package:template/modules/login/views/login.views.dart';
 import 'package:template/modules/mvvm/views/counter.views.dart';
 import 'package:template/modules/mvvm/views/mvvm.views.dart';
 import 'package:template/modules/provider/controllers/provider.controller.dart';
 import 'package:template/modules/provider/views/provider.views.dart';
 import 'package:template/modules/transactions/views/trasactions.view.dart';
 import 'package:template/modules/verifikasibhnbaku/views/verifikasi.views.dart';
+
+import 'modules/verifikasibongkar/views/listpengajuan.verifikasi.views.dart';
+import 'modules/verifikasibongkar/views/main.verifikasi.views.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,12 +29,12 @@ class MyApp extends StatelessWidget {
         providers: Register.blocproviders, 
         child: GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Example',
+            title: 'ERP Feedmill',
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: ExampleView()
-          ), 
+            home: LoginView()
+          ),
       );
     }else{
     //Provider Pattern
